@@ -1,0 +1,54 @@
+{
+  "notion_token": {
+    "description": "Notion Integration Token（API 密钥）",
+    "type": "string",
+    "hint": "前往 https://www.notion.so/my-integrations → 新建集成 → 复制 Internal Integration Token",
+    "obvious_hint": true
+  },
+  "root_page_id": {
+    "description": "根页面 ID（32 位十六进制，去掉连字符）",
+    "type": "string",
+    "hint": "从根页面的Notion分享链接中提取（最后一个/到?之间的部分），去掉连字符得到32位hex。注意：子页面ID无效"
+  },
+  "sync_interval_minutes": {
+    "description": "自动同步间隔（分钟），Webhook 启用后此间隔可改为较大值",
+    "type": "int",
+    "default": 30,
+    "hint": "每隔多少分钟自动检查页面更新并同步"
+  },
+  "auto_inject_context": {
+    "description": "是否在对话时自动注入设定上下文",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后，LLM 回答时会参考缓存的设定内容"
+  },
+  "sync_to_kb": {
+    "description": "是否将同步的内容写入 AstrBot 知识库",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，每次同步都会将设定内容写入知识库"
+  },
+  "kb_name": {
+    "description": "目标知识库名称（需要在 WebUI 先创建好）",
+    "type": "string",
+    "default": "我的设定集",
+    "hint": "先在 WebUI 知识库页面创建知识库，再填入名称"
+  },
+  "kb_chunk_size": {
+    "description": "知识库分块大小",
+    "type": "int",
+    "default": 512,
+    "hint": "写入知识库时每块的最大字符数"
+  },
+  "webhook_verification_token": {
+    "description": "Webhook 签名验证 Token（创建订阅后自动填入）",
+    "type": "string",
+    "hint": "通过 /notion webhook create 指令自动获取",
+    "invisible": true
+  },
+  "admin_notify_umo": {
+    "description": "管理员通知会话 ID",
+    "type": "string",
+    "hint": "留空则不发送通知"
+  }
+}
